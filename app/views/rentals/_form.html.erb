@@ -1,0 +1,37 @@
+<%= form_for(@rental) do |form| %>
+<article class="container">
+  <% if @rental.errors.any? %>
+    <% @rental.errors.full_messages.each do |message| %>
+      <ul>
+        <div class='alert alert-danger' role='alert'>
+          <li><%= message %></li>
+        </div>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <div class='property_form'>
+    <h1>MOFMOF</h1>
+    <p> Please fill in </p>
+    <%= form.text_field :name, placeholder: 'Property Name' %>
+    <%= form.number_field :rent, placeholder: 'Rent' %>
+    <%= form.text_field :address, placeholder: 'Property Address' %>
+    <%= form.number_field :age, placeholder: 'Your current age' %>
+    <%= form.text_field :feedback, placeholder: 'Feedback' %>
+      <div class='station_form'>
+        <%= form.fields_for :depots do |depots_form| %>
+        <h4>Nearest station<%= depots_form.index+1 %></h4>
+        <%= depots_form.text_field :route, placeholder: 'Route' %>
+        <%= depots_form.text_field :station, placeholder: 'Closest station'%>
+        <%= depots_form.number_field :walking_distance, placeholder: 'Walking distance time' %>
+        <% if rental.persisted? %>
+          <%= depots_form.check_box :_destroy, placeholder: 'Delete' %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class='property_form_button'>
+      <%= form.submit 'submit' %>
+    </div>
+    </div>
+  </article>
+<% end %>

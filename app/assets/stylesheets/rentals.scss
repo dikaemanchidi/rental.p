@@ -1,0 +1,30 @@
+// Place all the styles related to the Rentals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+article,
+.property_form,
+.station_form {
+  width: 348px;
+  margin: 10px auto;
+  padding: 30px;
+  text-align: center;
+}
+.property_form input,
+.station_form input {
+  margin: auto;
+  width: 250px;
+  height: 28px;
+}
+.property_form_button input {
+  color: #fff;
+  background: #3897f0;
+}
+.property_show_info{
+  margin: 60px;
+}
+.property_show_info p{
+  line-height: 30px;
+}
+.container{
+  background-color: green;
+}
