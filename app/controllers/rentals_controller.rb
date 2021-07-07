@@ -1,64 +1,64 @@
-class RentalsController < ApplicationController
-  before_action :set_rental, only: %i(show edit update destroy)
+class PropertiesController < ApplicationController
+  before_action :set_properties, only: %i(show edit update destroy)
 
   def index
-    @rentals = Rental.all
+    @propertiess = Properties.all
   end
 
   def show
-    @depots = @rental.depots
+    @depots = @properties.depots
   end
 
   def new
-    @rental = Rental.new
-    2.times{@rental.depots.build}
+    @properties = Properties.new
+    2.times{@properties.depots.build}
   end
 
   def edit
-    @rental.depots.build
+    @properties.depots.build
   end
 
   def create
-    @rental = Rental.new(rental_params)
+    @properties = Properties.new(Properties_params)
 
     respond_to do |format|
-      if @rental.save
-        format.html { redirect_to @rental, notice: 'Rental was successfully created.' }
-        format.json { render :show, status: :created, location: @rental }
+      if @properties.save
+        format.html { redirect_to @properties, notice: 'properties was successfully created.' }
+        format.json { render :show, status: :created, location: @properties }
       else
         format.html { render :new }
-        format.json { render json: @rental.errors, status: :unprocessable_entity }
+        format.json { render json: @properties.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
     respond_to do |format|
-      if @rental.update(rental_params)
-        format.html { redirect_to @rental, notice: 'Rental was successfully updated.' }
-        format.json { render :show, status: :ok, location: @rental }
+      if @properties.update(Properties_params)
+        format.html { redirect_to @properties, notice: 'properties was successfully updated.' }
+        format.json { render :show, status: :ok, location: @properties }
       else
         format.html { render :edit }
-        format.json { render json: @rental.errors, status: :unprocessable_entity }
+        format.json { render json: @properties.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @rental.destroy
+    @properties.destroy
     respond_to do |format|
-      format.html { redirect_to rentals_url, notice: 'Rental was successfully destroyed.' }
+      format.html { redirect_to Properties_url, notice: 'properties was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-  def set_rental
-    @rental = Rental.find(params[:id])
+  def set_properties
+    @properties = Properties.find(params[:id])
   end
 
-  def rental_params
-    params.require(:rental).permit(:name, :rent, :address, :age, :feedback,
-                                  depots_attributes: %i(id route station walking_distance rental_id _destroy]))
+  def properties_params
+    params.require(:properties).permit(:name, :rent, :address, :age, :feedback,
+                                  depots_attributes: %i(id route station walking_distance properties_id _destroy]))
   end
 end

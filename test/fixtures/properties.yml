@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  rent: 1
+  rent: MyString
   address: MyString
   age: 1
-  feedback: MyText
 
 two:
   name: MyString
-  rent: 1
+  rent: MyString
   address: MyString
   age: 1
-  feedback: MyText

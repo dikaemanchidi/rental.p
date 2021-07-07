@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root 'rentals#index'
-  resources :rentals do
-    resources :depots
+  root to: 'properties#index'
+  resources :properties
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
-end

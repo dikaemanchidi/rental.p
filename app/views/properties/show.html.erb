@@ -1,0 +1,66 @@
+<h1>Property Details</h1>
+<br>
+
+<p id="notice"><%= notice %></p>
+
+<% n = 0 %>
+<% @property.stations.each do |x| %>
+	<% if x.station.present? %>
+		<% n += 1 %>
+	<% end %>
+<% end %>
+<h3>This property has <%=n %> nearest station(s)</h3>
+
+<hr>
+
+<p>
+  <strong>Property's name:</strong>
+<%= @property.property_name %>
+</p>
+
+<p>
+ <strong>Rent:</strong>
+ <%= @property.rent %>
+</p>
+
+  <p>
+ <strong>Address:</strong>
+ <%= @property.address %>
+</p>
+
+<p>
+ <strong>Building's age:</strong>
+ <%= @property.age %>
+</p>
+
+<p>
+ <strong>Remarks:</strong>
+ <%= @property.remark %>
+</p>
+
+<hr>
+ <div>
+<%n = 0%>
+<% @property.stations.each do |station|%>
+    <% if station.station.present? %>
+    <h2>Nearest Station<%= n += 1 %></h2>
+
+  <p>
+    <strong>Line:</strong>
+    <%= station.line %>
+  </p>
+
+  <p>
+    <strong> Station:</strong>
+    <%= station.station %>
+  </p>
+  <p>
+    <strong>By walk:</strong>
+    <%= station.time %>
+  </p>
+  <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

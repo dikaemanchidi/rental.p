@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DepotTest < ActiveSupport::TestCase
+class PropertiesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

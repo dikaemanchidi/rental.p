@@ -1,0 +1,85 @@
+<%= form_with(model: @property, local: true) do |form| %>
+<% v = 0 %>
+<% @property.stations.each do |x| %>
+<% if x.station.present? %>
+  <% v += 1 %>
+ <% end %>
+<% end %>
+<h3>This property has <%=v%> nearest station(s)</h3>
+
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<hr>
+
+<h2>Register property</h2>
+  <div class="field">
+      <%= form.label :property_name, "Property name"  %>
+      <%= form.text_field :property_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :rent, "Rent"  %>
+      <%= form.number_field :rent %>
+    </div>
+
+    <div class="field">
+      <%= form.label :address, "Address"%>
+      <%= form.text_field :address %>
+    </div>
+
+    <div class="field">
+      <%= form.label :age, "Building's age"%>
+      <%= form.number_field :age %>
+    </div>
+
+    <div class="field">
+      <%= form.label :remark, "Remarks"%>
+      <%= form.text_area :remark %>
+    </div>
+
+    <hr>
+      <% n = 0 %>
+  <%= form.fields_for :stations do |g| %>
+      <h2>Nearest station <%= n += 1 %></h2>
+      <div class="field">
+        <div>
+          <%= g.label :line, "Line name"%>
+        </div>
+        <div>
+          <%= g.text_field :line %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div>
+          <%= g.label :station, "Station name"  %>
+        </div>
+        <div>
+          <%= g.text_field :station %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div>
+          <%= g.label :time, "By walk"  %>
+        </div>
+        <div>
+         <%= g.text_field :time %>min
+        </div>
+      </div>
+       <% end %>
+
+       <div class="actions">
+      <%= form.submit value:"Register"%>
+      </div>
+      <% end %>
